@@ -1,0 +1,41 @@
+"""
+uvcorn -> server for running apis
+fast api -> 
+/docs -> provides the documentation of api
+
+# mention port also
+uvicorn main:app --reload --port 8001
+
+uvicorn main:app --reload --host 0.0.0.0 --port 800
+
+"""
+Structure of FastAPI
+main.py -> contains the main code of the FastAPI app
+requirements.txt -> contains the dependencies of the FastAPI app
+schemas.py -> contains the Pydantic models of the FastAPI app, for validations
+
+alembic
+  -> Migration tool for SQLAlchemy, that helps manage database schema change
+    -> alembic.ini -> configuration file for alembic
+    -> env.py -> script for managing the database schema
+    -> versions -> contains the migration files
+    -> README -> contains the instructions for using alembic
+
+initiate alembic
+    alembic init alembic - this will create the alembic folder
+Create migration
+    alembic revision --autogenerate -m "Initial migration" - this will create a migration file in the versions folder
+Apply migration
+    alembic upgrade head - this will apply the migration to the database
+Downgrade migration
+    alembic downgrade -1 - this will revert the last migration from the database
+
+
+alembic revision - create a new migration
+--autogenerate - detects newchanges in the models
+-m "Initial migration" - message for the migration file
+
+The generated migration file has two functions, upgrade and downgrade. The upgrade function applies the changes to the database, 
+while the downgrade function reverts the changes.
+
+"""

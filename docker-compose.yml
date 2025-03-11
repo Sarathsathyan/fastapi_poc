@@ -1,0 +1,41 @@
+services:
+  db:
+    image: postgres:12
+    container_name: "fastapi_db"
+    volumes:
+      - psql-data:/var/lib/postgresql/data
+      - .:/app
+    ports:
+      - "5431:5431"
+    env_file:
+      - ./app/config/.env
+    expose:
+      - 5431
+    command: -p 5431
+  web:
+    build: .
+    tty: true
+    container_name: "fast_api_application"
+    restart: always
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+    ports:
+      - "8001:8001"
+  
+  jenkins:
+    image: jenkins/jenkins:lts
+    container_name: "jenkins"
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    volumes:
+      - jenkins-data:/var/jenkins_home
+    
+    restart: always
+
+volumes:
+  psql-data:
+    driver: local
+  jenkins-data:
