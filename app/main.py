@@ -6,8 +6,11 @@ from .routes import router
 app = FastAPI()
 
 app.include_router(router)
-# @app.get('/')
-# def get_root():
-#     return "Welcome to books api"
+@app.get('/')
+def get_root():
+    return "Welcome to books api"
     
 
+@app.get('/test')
+def test():
+    return 'testing....'

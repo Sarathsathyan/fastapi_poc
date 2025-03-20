@@ -22,7 +22,7 @@ pipeline{
         stage('Schedule Python Task'){
             steps{
                 // run test_python file from Advanced_Python folder
-                sh 'python3 test_python.py'
+                sh 'curl http://0.0.0.0:8001/test'
             }
         }
         
