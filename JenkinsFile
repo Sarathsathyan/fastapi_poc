@@ -19,5 +19,18 @@ pipeline{
                 echo 'Deploying the project'
             }
         }
+        stage('Python Version'){
+            steps{
+                // check python version
+                sh 'python3 --version'
+            }
+        }
+        stage('Schedule Python Task'){
+            steps{
+                // run test_python file from Advanced_Python folder
+                sh 'python3 test_python.py'
+            }
+        }
+        
     }
 }
