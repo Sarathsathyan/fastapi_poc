@@ -19,12 +19,6 @@ pipeline{
                 echo 'Deploying the project'
             }
         }
-        stage('Python Version'){
-            steps{
-                // check python version
-                sh 'docker-compose exec web python --version'
-            }
-        }
         stage('Schedule Python Task'){
             steps{
                 // run test_python file from Advanced_Python folder
