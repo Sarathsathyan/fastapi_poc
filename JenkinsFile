@@ -22,7 +22,7 @@ pipeline{
         stage('Python Version'){
             steps{
                 // check python version
-                sh 'python3 --version'
+                sh 'docker-compose exec web python --version'
             }
         }
         stage('Schedule Python Task'){
